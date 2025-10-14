@@ -10,7 +10,7 @@ return {
 			check_ts = true, -- enable treesitter
 			ts_config = {
 				lua = { "string" }, -- don't add pairs in lua string treesitter nodes
-				java = false, -- don't check treesitter on java
+				-- java = false, -- don't check treesitter on java
 			},
 		})
 
@@ -22,5 +22,11 @@ return {
 
 		-- make autopairs and completion work together
 		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+		local Rule = require("nvim-autopairs.rule")
+		local npairs = require("nvim-autopairs")
+
+		-- When input '$' add '$' when writing in typst
+		npairs.add_rule(Rule("$", "$", "typst"))
 	end,
 }

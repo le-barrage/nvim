@@ -5,14 +5,14 @@ return {
 	config = function()
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-		local lspconfig = require("lspconfig")
+		-- local lspconfig = vim.lsp.enable()
 
-		lspconfig.lua_ls.setup({ capabilities = capabilities })
-		lspconfig.clangd.setup({
+		vim.lsp.enable("lua_ls", { capabilities = capabilities })
+		vim.lsp.enable("tinymist", { capabilities = capabilities })
+		vim.lsp.enable("clangd", {
 			capabilities = capabilities,
 			cmd = {
 				"clangd",
-				-- "ast-grep",
 				"--offset-encoding=utf-16",
 			},
 		})
