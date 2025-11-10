@@ -20,7 +20,16 @@ return {
 					vim.api.nvim_create_autocmd("BufWritePre", {
 						buffer = bufnr,
 						callback = function()
-							vim.lsp.buf.format({ bufnr = bufnr })
+							-- local view = vim.fn.winsaveview()
+							-- vim.lsp.buf.format({ bufnr = bufnr })
+							vim.lsp.buf.format({
+								bufnr = bufnr,
+								async = false,
+								filter = function(c)
+									return c.name == "null-ls"
+								end,
+							})
+							-- vim.fn.winrestview(view)
 						end,
 					})
 				end
