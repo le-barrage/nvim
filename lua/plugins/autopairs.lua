@@ -27,6 +27,6 @@ return {
 		local npairs = require("nvim-autopairs")
 
 		-- When input '$' add '$' when writing in typst
-		npairs.add_rule(Rule("$", "$", "typst"))
+		-- npairs.add_rule(Rule("$", "$", "typst"))
 	end,
 }
